@@ -7,3 +7,4 @@ CREATE TABLE list(
 SELECT * FROM list;
 INSERT INTO list("task","status","task-date")
 Values('clean laundry','false','2022-05-20');
+ALTER TABLE list RENAME COLUMN "task-date" TO "task_date";
