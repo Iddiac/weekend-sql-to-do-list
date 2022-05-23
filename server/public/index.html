@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,35 @@
     <link rel="stylesheet" href="styling/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>To-Do List</h1>
+    </header>
+    <h2>Add Task</h2>
+
+    <div class="task/date">
+        <input id="task" placeholder="Task" />
+        <input id="date" placeholder="yyyy/mm/dd" />
+        <button type="button" id="addTaskButton">Add Task</button>
+    </div>
+
+    <div id="taskList">
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Date</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+
+            <tbody id="unfinishedTasks">
+
+            </tbody>
+        </table>
+    </div>
+
 </body>
+
 </html>
