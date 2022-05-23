@@ -10,7 +10,7 @@ $(document).ready(()=>{
 console.log("jQuery works")
 $('#addTaskButton').on('click', submitHandler);
 $('#unfinishedTasks').on('click', ".complete", completetask);
-// $('#unfinishedTasks').on('click', ".complete", deletetask);
+ $('#unfinishedTasks').on('click', ".delete", deletetask);
 gettask();
 
 });
@@ -30,6 +30,8 @@ function newtask(){
      }).then((response)=>{
          console.log('post from server', response);
          gettask(response);
+        $('#task').val('');
+        $('#date').val('');
      }).catch((err)=>{
          console.log('error in post', err);
          alert('can not add book');
@@ -60,6 +62,7 @@ $('#unfinishedTasks').append(`
     <td>${listitems.task_date}</td>
     <td>
     <button class="complete" data-listitemsid="${listitems.id}"> complete </button>
+    <button class="delete" data-listitemsid="${listitems.id}"> delete </button>
     </td>
 </tr>
 `);
@@ -73,17 +76,9 @@ function completetask(event){
         method:"PUT",
         url:`list/${taskid}/status`
     }).then(response =>{
-        alert('task completed');
+      alert('task completed');
         gettask();
 
-    }).catch(err =>{
-        console.log('error in', err);
-    })
-    $.ajax({
-        method:"delete",
-        url:`list/${taskid}`
-    }).then(response =>{
-        gettask();
     }).catch(err =>{
         console.log('error in', err);
     })
@@ -92,15 +87,13 @@ function completetask(event){
 
 
 function deletetask(event){
-    if(listitems.status === true){
-    $.ajax({
-        method:"delete",
-        url:`list/${taskid}`
-    }).then(response =>{
-        gettask();
-
-    }).catch(err =>{
-        console.log('error in', err);
-    })
-}
+let taskid= $(event.target).data("listitemsid")
+$.ajax({
+    method:"delete",
+    url:`list/${taskid}`
+}).then(response =>{
+    gettask();
+}).catch(err =>{
+    console.log('error in', err);
+})
 }

@@ -29,11 +29,11 @@ router.post('/', (req, res) => {
     let insidebody = req.body;
     console.log('in /item POST')
     // set up a query for security and make an object with the items from bodyitems
-    const query = `INSERT INTO "list"("task","status","task_date")
- VALUES($1,$2,$3)`;
+    const query = `INSERT INTO "list"("task","task_date")
+ VALUES($1,$2)`;
  
  //Now set values= to the items inside of insidebody
- const values =[insidebody.task, insidebody.status, insidebody.task_date]
+ const values =[insidebody.task,insidebody.task_date]
 
     pool.query(query, values).then((response) => {
         res.sendStatus(201);
