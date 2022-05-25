@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     console.log('in /items GET');
     // set query = to all items in TABLE
-    const query = `SELECT * FROM "list"`;
+    const query = `SELECT * FROM "list" ORDER BY "id"`;
     // put query into pool.query
     pool.query(query).then((response) => {
         // send the rows of the table which is inside of response
