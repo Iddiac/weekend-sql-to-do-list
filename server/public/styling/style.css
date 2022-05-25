@@ -1,17 +1,21 @@
-body{
+body {
     background-color: bisque;
     text-align: center;
 }
 
-table{
+table {
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: center;
     box-shadow: 20px;
     border-collapse: collapse;
+    background-color: aquamarine;
+    border-left: solid black;
+    border-right: solid black;
+   
 }
 
-
-td{
-border: solid black;
+td {
+    border-top: solid black;
+    border-bottom: solid black;
 }
